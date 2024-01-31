@@ -1,0 +1,11 @@
+{
+    "name": "mai/p8_to-do_list",
+    "description": "To do list project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Maria Cao"
+        }
+    ],
+    "require": {}
+}
