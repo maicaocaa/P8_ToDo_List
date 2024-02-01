@@ -1,0 +1,84 @@
+<?php
+namespace App\Controllers;
+use Database\DatabaseConnection;
+use Exception;
+require "vendor/autoload.php";
+
+class ToDoController {
+    private $server;
+    private $database;
+    private $username;
+    private $password;
+    private $connection;
+
+    public function  __construct() {
+        $this -> server= "localhost";
+        $this -> database = "todo_list_db";
+        $this -> username = "root";
+        $this -> password = "";
+
+        $this -> connection = new DatabaseConnection($this ->server, $this -> database ,
+                                                    $this -> username, $this -> password);
+        $this -> connection -> connect ();
+
+    }
+
+    // public function index(){
+    //     //INDEX: muestra/selecciona lista/colección/indice 
+    //     //de todos los elementos de una entidad dada
+    // }
+
+    // public function create(){
+
+   // }
+
+    public function store($data){
+        $query = "INSERT INTO tasks (title, description, date_expir) VALUES (?, ?, ?)";
+        try{
+            $statement = $this->connection->get_connection()->prepare($query);
+            $results = $statement->execute([$data['title'], $data['description'],
+                                          $data['date_expir']
+                                        ]);
+            if(!empty($results)){
+                $response = "Se ha registrado con la tarea {$data['title']} en la base de datos";
+                var_dump($response);
+                return [$results, $response];
+            }
+        }catch(Exception $e){
+            echo "Ocurrio un error en el registro, vuelve a intentarlo";
+        }
+    }
+
+
+    // $tasks -> store ([
+    //     "title" =>"tarea añadida",
+    //     "description" =>"una descripcion de la tarea de prueba",
+    //     "date_expir" =>'2024-02-15'
+    // ]);
+    
+
+    // public function show(){
+    //     //SHOW: muestra/selecciona un elemento dado
+
+    // }
+
+    // public function edit(){
+
+    // }
+
+    // public function update(){
+
+    // }
+
+    // public function delete(){
+
+    // }
+
+
+}
+
+
+
+
+
+?>

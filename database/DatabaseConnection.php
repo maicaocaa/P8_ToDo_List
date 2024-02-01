@@ -1,6 +1,6 @@
 <?php
 
-namespace Database; //apellidos de la clase
+namespace Database; 
 
 class DatabaseConnection{
     private $server;
