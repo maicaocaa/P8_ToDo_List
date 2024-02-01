@@ -23,14 +23,35 @@ class ToDoController {
 
     }
 
-    // public function index(){
-    //     //INDEX: muestra/selecciona lista/colección/indice 
-    //     //de todos los elementos de una entidad dada
-    // }
+    public function index(){
+        //INDEX: muestra/selecciona lista/colección/indice 
+         //de todos los elementos de una entidad dada
+      $query = "SELECT * FROM tasks";
+      try{
+        $statement = $this -> connection ->get_connection()->query($query);
+        //$results = $statement->execute();
+        if (!empty($statement)){
+            $response = "Estas son todas las tareas pendiente y completas";
+            foreach($statement as $row){
+                echo " {$row ['title']}     ";
+                echo " {$row ['description']}     ";
+                echo " {$row ['date_expir']} ";
+                echo "\n";
+            }
+           // var_dump($results);
+           // var_dump($response);
+            return [$statement, $response];
+        } 
+      }
+      catch(Exception $e){
+        echo "Ocurrio un error en el registro, vuelve a intentarlo";
+    }
+     }
 
-    // public function create(){
 
-   // }
+    public function create($data){
+
+   }
 
     public function store($data){
         $query = "INSERT INTO tasks (title, description, date_expir) VALUES (?, ?, ?)";
@@ -49,28 +70,22 @@ class ToDoController {
         }
     }
 
-
-    // $tasks -> store ([
-    //     "title" =>"tarea añadida",
-    //     "description" =>"una descripcion de la tarea de prueba",
-    //     "date_expir" =>'2024-02-15'
-    // ]);
     
 
-    // public function show(){
+    // public function show($data){
     //     //SHOW: muestra/selecciona un elemento dado
 
     // }
 
-    // public function edit(){
+    // public function edit($data){
 
     // }
 
-    // public function update(){
+    // public function update($data){
 
     // }
 
-    // public function delete(){
+    // public function delete($data){
 
     // }
 
