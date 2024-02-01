@@ -1,6 +1,6 @@
 <?php
 
-namespace Database; //apellidos de la clase
+namespace App\Database; //ruta de acceso a la clase
 
 class DatabaseConnection{
     private $server;
