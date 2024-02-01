@@ -34,33 +34,4 @@ class DatabaseConnection{
 }
 
 
-//Cheking
-
-// $server = "localhost";
-// $database = "todo_list_db";
-// $username = "root";
-// $password = "";
-
-// // instanciar el objeto de la conexion
-// $databaseConnection = new DatabaseConnection($server,$database, $username, $password);
-// //conectar a la base de datos
-// $databaseConnection ->connect();
-// // ejecutar una consulta
-// $query= "SELECT title FROM tasks";
-
-// // como le paso la query a la conexion, pues llamando al opbjeto metodo get_connection que nos devuelve la conexion
-// // y luego le añadimos un prepare y la query. Despues de preparar se hace un exec
-// $results = $databaseConnection->get_connection()->query($query);
-// var_dump($results);
-
-// // $results->execute();
-// foreach($results as $row){
-//     echo $row ['title'];
-// }
-
-// $result = $results->fetchAll(\PDO::FETCH_ASSOC);
-// var_dump($result);
-
-
-
 ?>
